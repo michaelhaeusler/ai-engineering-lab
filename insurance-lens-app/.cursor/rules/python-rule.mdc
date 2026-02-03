@@ -1,0 +1,602 @@
+---
+description: Advanced Python best practices for ML/AI applications (2025)
+globs: ["**/*.py"]
+alwaysApply: true
+---
+
+# 🐍 Senior Python Developer Best Practices for ML/AI (2025)
+
+## 📦 Package Management & Dependencies
+
+### Modern Tools (What Seniors Use)
+- **✅ `uv`**: Ultra-fast Python package installer (Rust-based, replaces pip/pip-tools)
+- **✅ `pyproject.toml`**: Single source of truth for project metadata (replaces setup.py, requirements.txt)
+- **✅ Virtual environments**: Always use `.venv`, never install globally
+- **✅ Lock files**: `uv.lock` pins exact versions for reproducibility
+
+### What Juniors Might Miss
+- ❌ Using `pip install` directly without lock files
+- ❌ Mixing `requirements.txt` with `pyproject.toml`
+- ❌ Not specifying version constraints (`package>=1.0.0,<2.0.0`)
+- ❌ Installing packages globally instead of in virtual environments
+
+### Best Practices
+```bash
+# ✅ Modern way
+uv init                    # Initialize project
+uv add package-name        # Add dependency
+uv sync                    # Install/sync dependencies
+uv run python script.py    # Run in virtual environment
+
+# ❌ Old way
+pip install package-name   # No lock file, no version tracking
+```
+
+---
+
+## 🎯 Type Hints & Static Analysis
+
+### What Seniors Use
+- **✅ Type hints everywhere**: `def process(data: List[str]) -> Dict[str, int]:`
+- **✅ `mypy`**: Static type checker to catch errors before runtime
+- **✅ `pyright`**: Microsoft's fast type checker (used by VS Code)
+- **✅ Pydantic**: Runtime validation + type hints = bulletproof code
+
+### Type Hint Patterns
+```python
+# ✅ Good: Specific types
+from typing import List, Dict, Optional, Union
+def process_chunks(chunks: List[TextChunk]) -> List[SearchResult]:
+    ...
+
+# ❌ Bad: Too generic
+def process_chunks(chunks: List[Any]) -> List[Dict[str, Any]]:
+    ...
+
+# ✅ Good: Optional for nullable values
+def get_user(user_id: str) -> Optional[User]:
+    ...
+
+# ✅ Good: Type aliases for complex types
+UserId = str
+UserDict = Dict[str, Union[str, int, bool]]
+```
+
+### Setup mypy
+```toml
+# pyproject.toml
+[tool.mypy]
+python_version = "3.11"
+strict = true
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+```
+
+---
+
+## 🏗️ Code Organization & Architecture
+
+### What Seniors Do
+- **✅ Separation of Concerns**: Routes, services, models, utils are separate
+- **✅ Dependency Injection**: Pass dependencies, don't create them
+- **✅ Single Responsibility**: Each class/function does ONE thing
+- **✅ `__all__`**: Explicit public API in `__init__.py`
+
+### Folder Structure (FastAPI + ML)
+```
+project/
+├── app/
+│   ├── __init__.py
+│   ├── main.py                 # FastAPI app entry
+│   ├── core/
+│   │   ├── config.py          # Pydantic Settings
+│   │   ├── exceptions.py      # Custom exceptions
+│   │   └── results.py         # Structured results
+│   ├── models/
+│   │   ├── schemas.py         # API schemas (Pydantic)
+│   │   └── internal.py        # Internal data models
+│   ├── services/              # Business logic
+│   │   ├── pdf_processor.py
+│   │   ├── vector_store.py
+│   │   └── answer_generator.py
+│   └── api/
+│       └── routes/            # API endpoints
+├── tests/                     # Unit & integration tests
+├── dev_scripts/              # Development helpers
+└── pyproject.toml
+```
+
+### What Juniors Miss
+- ❌ Putting everything in one file
+- ❌ Business logic in routes
+- ❌ No clear separation between layers
+- ❌ Tight coupling between components
+
+---
+
+## 🧪 Testing & Quality
+
+### What Seniors Use
+- **✅ `pytest`**: Modern testing framework (not unittest)
+- **✅ `pytest-asyncio`**: For async tests
+- **✅ `pytest-cov`**: Code coverage reports
+- **✅ Fixtures**: Reusable test setup
+- **✅ Mocking**: Mock external services (API calls, DB)
+
+### Testing Patterns
+```python
+# ✅ Good: Clear test structure
+import pytest
+from app.services import PDFProcessor
+
+@pytest.fixture
+def pdf_processor():
+    """Fixture provides configured processor."""
+    config = PDFProcessingConfig(chunk_size=512)
+    return PDFProcessor(config)
+
+def test_chunk_text_creates_correct_number_of_chunks(pdf_processor):
+    # Arrange
+    text_data = [{"page": 1, "text": "Sample text"}]
+    
+    # Act
+    chunks = pdf_processor.chunk_text(text_data, "test.pdf")
+    
+    # Assert
+    assert len(chunks) > 0
+    assert all(isinstance(c, TextChunk) for c in chunks)
+
+# ✅ Good: Mock external services
+@pytest.mark.asyncio
+async def test_answer_generation_mocks_llm(mocker):
+    mock_llm = mocker.patch("app.services.answer_generator.init_chat_model")
+    mock_llm.return_value.ainvoke.return_value = "Mocked answer"
+    
+    generator = AnswerGenerator()
+    context = AnswerContext(question="test", search_results=[...])
+    result = await generator.generate_answer(context)
+    
+    assert result.answer == "Mocked answer"
+```
+
+### Running Tests
+```bash
+# Run all tests with coverage
+uv run pytest --cov=app --cov-report=html
+
+# Run specific test file
+uv run pytest tests/test_pdf_processor.py -v
+
+# Run tests matching pattern
+uv run pytest -k "test_chunk" -v
+```
+
+---
+
+## 🎨 Code Style & Linting
+
+### What Seniors Use
+- **✅ `ruff`**: Ultra-fast linter & formatter (replaces black, flake8, isort)
+- **✅ `pre-commit`**: Git hooks to enforce quality
+- **✅ Consistent formatting**: No debates, just auto-format
+
+### Setup Ruff
+```toml
+# pyproject.toml
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # pyflakes
+    "I",   # isort
+    "N",   # pep8-naming
+    "UP",  # pyupgrade
+]
+ignore = ["E501"]  # Line too long (handled by formatter)
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+```
+
+### Pre-commit hooks
+```yaml
+# .pre-commit-config.yaml
+repos:
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.1.6
+    hooks:
+      - id: ruff
+        args: [--fix]
+      - id: ruff-format
+```
+
+---
+
+## 📊 Logging & Monitoring
+
+### What Seniors Use
+- **✅ `structlog`**: Structured logging (JSON output)
+- **✅ Log levels**: DEBUG, INFO, WARNING, ERROR, CRITICAL
+- **✅ Correlation IDs**: Track requests across services
+- **✅ Never use `print()`**: Use proper logging
+
+### Logging Best Practices
+```python
+# ✅ Good: Structured logging
+import logging
+import structlog
+
+logger = structlog.get_logger(__name__)
+
+def process_document(doc_id: str):
+    logger.info("processing_document", doc_id=doc_id, action="start")
+    try:
+        # ... processing ...
+        logger.info("processing_document", doc_id=doc_id, action="complete", chunks=10)
+    except Exception as e:
+        logger.error("processing_failed", doc_id=doc_id, error=str(e))
+        raise
+
+# ❌ Bad: Print statements
+def process_document(doc_id: str):
+    print(f"Processing {doc_id}")  # Lost in production!
+    # ... processing ...
+    print("Done!")
+```
+
+### Configuration
+```python
+# app/core/logging.py
+import structlog
+
+def setup_logging():
+    structlog.configure(
+        processors=[
+            structlog.stdlib.filter_by_level,
+            structlog.stdlib.add_logger_name,
+            structlog.stdlib.add_log_level,
+            structlog.processors.TimeStamper(fmt="iso"),
+            structlog.processors.StackInfoRenderer(),
+            structlog.processors.format_exc_info,
+            structlog.processors.JSONRenderer()
+        ],
+        wrapper_class=structlog.stdlib.BoundLogger,
+        context_class=dict,
+        logger_factory=structlog.stdlib.LoggerFactory(),
+    )
+```
+
+---
+
+## 🔒 Configuration & Secrets
+
+### What Seniors Use
+- **✅ `pydantic-settings`**: Type-safe configuration
+- **✅ Environment variables**: Never hardcode secrets
+- **✅ `.env` files**: For local development only
+- **✅ `.env.example`**: Template for required variables
+
+### Configuration Pattern
+```python
+# app/core/config.py
+from pydantic_settings import BaseSettings, SettingsConfigDict
+
+class Settings(BaseSettings):
+    """Application settings with validation."""
+    model_config = SettingsConfigDict(
+        env_file=".env",
+        env_file_encoding="utf-8",
+        case_sensitive=False
+    )
+    
+    # API Keys
+    openai_api_key: str
+    qdrant_url: str = "http://localhost:6333"
+    
+    # App Settings
+    app_name: str = "InsuranceLens"
+    debug: bool = False
+    
+    # ML Settings
+    embedding_model: str = "text-embedding-3-small"
+    chunk_size: int = 512
+    
+    # Validate fields
+    @property
+    def is_production(self) -> bool:
+        return not self.debug
+
+settings = Settings()
+```
+
+### What Juniors Miss
+- ❌ Hardcoding API keys in code
+- ❌ No validation of configuration
+- ❌ Committing `.env` to git
+- ❌ No defaults for optional settings
+
+---
+
+## 🤖 ML/AI Specific Best Practices
+
+### Vector Databases
+- **✅ Qdrant/Weaviate/Pinecone**: Don't build your own
+- **✅ Batch operations**: Upsert chunks in batches
+- **✅ Metadata filtering**: Store metadata for filtering
+- **✅ Separate collections**: One per user/policy
+
+### LLM Integration
+- **✅ LangChain**: For complex chains and agents
+- **✅ Rate limiting**: Handle API rate limits gracefully
+- **✅ Streaming**: Stream responses for better UX
+- **✅ Caching**: Cache embeddings and frequent queries
+- **✅ Token counting**: Track and limit token usage
+
+### Prompt Engineering
+```python
+# ✅ Good: Structured prompts with clear instructions
+SYSTEM_PROMPT = """You are an expert in German health insurance policies.
+
+RULES:
+1. Always respond in German
+2. Use only provided document information
+3. Cite sources with [Page X]
+4. If unsure, say so clearly
+
+FORMAT:
+- Use **bold** for key terms
+- Use bullet points for lists
+"""
+
+# ❌ Bad: Vague prompts
+SYSTEM_PROMPT = "Answer questions about insurance."
+```
+
+### Error Handling for ML
+```python
+# ✅ Good: Specific exceptions
+class EmbeddingGenerationError(Exception):
+    """Raised when embedding generation fails."""
+    pass
+
+class VectorSearchTimeout(Exception):
+    """Raised when vector search times out."""
+    pass
+
+try:
+    embeddings = generate_embeddings(text)
+except OpenAIError as e:
+    logger.error("openai_error", error=str(e))
+    raise EmbeddingGenerationError(f"Failed to generate embeddings: {e}")
+```
+
+---
+
+## 🚀 Performance & Optimization
+
+### What Seniors Do
+- **✅ Profiling**: Use `cProfile`, `line_profiler` to find bottlenecks
+- **✅ Async/await**: For I/O-bound operations (API calls, DB queries)
+- **✅ Batch processing**: Process multiple items together
+- **✅ Caching**: `functools.lru_cache` for expensive computations
+- **✅ Connection pooling**: Reuse DB/API connections
+
+### Async Patterns
+```python
+# ✅ Good: Async for I/O operations
+async def process_multiple_documents(docs: List[str]) -> List[ProcessedDocument]:
+    tasks = [process_single_document(doc) for doc in docs]
+    return await asyncio.gather(*tasks)
+
+# ✅ Good: Connection pooling
+from sqlalchemy.ext.asyncio import create_async_engine
+
+engine = create_async_engine(
+    DATABASE_URL,
+    pool_size=20,
+    max_overflow=10
+)
+```
+
+### Caching
+```python
+from functools import lru_cache
+
+@lru_cache(maxsize=1000)
+def get_embedding(text: str) -> List[float]:
+    """Cache embeddings to avoid re-computing."""
+    return openai.embeddings.create(text).data[0].embedding
+```
+
+---
+
+## 📚 Documentation
+
+### What Seniors Document
+- **✅ Docstrings**: All public functions/classes (Google style)
+- **✅ Type hints**: Self-documenting code
+- **✅ README**: Clear setup instructions
+- **✅ Architecture docs**: High-level system design
+- **✅ API docs**: Auto-generated with FastAPI/Swagger
+
+### Docstring Style (Google Format)
+```python
+def search_similar_chunks(
+    self,
+    policy_id: str,
+    query: str,
+    limit: Optional[int] = None
+) -> List[SearchResult]:
+    """Search for similar chunks using vector similarity.
+    
+    Args:
+        policy_id: Unique identifier for the policy to search
+        query: Search query text
+        limit: Maximum number of results to return. If None, uses
+            configured default from settings.
+    
+    Returns:
+        List of SearchResult objects ordered by relevance score,
+        each containing a TextChunk and similarity score.
+    
+    Raises:
+        CollectionNotFoundError: If policy collection doesn't exist
+        VectorSearchError: If search operation fails
+        
+    Example:
+        >>> results = store.search_similar_chunks("policy-123", "waiting period")
+        >>> print(f"Found {len(results)} results")
+        Found 5 results
+    """
+    ...
+```
+
+---
+
+## 🔐 Security
+
+### What Seniors Do
+- **✅ Input validation**: Use Pydantic for all inputs
+- **✅ SQL injection prevention**: Use ORMs or parameterized queries
+- **✅ CORS properly configured**: Whitelist specific origins
+- **✅ Rate limiting**: Prevent abuse
+- **✅ Secrets scanning**: Use `detect-secrets` in pre-commit
+
+### Security Patterns
+```python
+# ✅ Good: Input validation
+from pydantic import BaseModel, Field, validator
+
+class QuestionRequest(BaseModel):
+    question: str = Field(..., min_length=1, max_length=500)
+    
+    @validator("question")
+    def question_must_be_safe(cls, v):
+        if any(char in v for char in ["<", ">", "script"]):
+            raise ValueError("Invalid characters in question")
+        return v
+
+# ✅ Good: Rate limiting
+from slowapi import Limiter, _rate_limit_exceeded_handler
+from slowapi.util import get_remote_address
+
+limiter = Limiter(key_func=get_remote_address)
+app.state.limiter = limiter
+
+@app.post("/api/policies/upload")
+@limiter.limit("5/minute")
+async def upload_policy(request: Request):
+    ...
+```
+
+---
+
+## 📦 Essential Libraries for ML/AI Apps (2025)
+
+### Core Framework
+- `fastapi` - Modern web framework
+- `uvicorn[standard]` - ASGI server
+
+### Data & Validation
+- `pydantic` - Data validation
+- `pydantic-settings` - Configuration management
+
+### ML/AI
+- `langchain` - LLM orchestration
+- `langchain-openai` - OpenAI integration
+- `qdrant-client` - Vector database
+- `tiktoken` - Token counting
+- `openai` - OpenAI API
+
+### Development
+- `pytest` - Testing
+- `pytest-asyncio` - Async testing
+- `pytest-cov` - Coverage
+- `mypy` - Type checking
+- `ruff` - Linting & formatting
+- `pre-commit` - Git hooks
+
+### Monitoring
+- `structlog` - Structured logging
+- `prometheus-client` - Metrics
+- `sentry-sdk` - Error tracking
+
+### Utilities
+- `python-dotenv` - Load .env files
+- `httpx` - Async HTTP client
+- `tenacity` - Retry logic
+
+---
+
+## 🎯 Summary: Junior → Senior Checklist
+
+### Junior Typically Does
+- ❌ Uses `pip install` without lock files
+- ❌ No type hints
+- ❌ Everything in one file
+- ❌ Uses `print()` for debugging
+- ❌ Hardcodes configuration
+- ❌ No tests
+- ❌ Generic exceptions
+- ❌ No documentation
+
+### Senior Always Does
+- ✅ Uses `uv` with `pyproject.toml`
+- ✅ Type hints + mypy + Pydantic
+- ✅ Clean architecture with separation of concerns
+- ✅ Structured logging with `structlog`
+- ✅ Pydantic Settings for configuration
+- ✅ Comprehensive tests with >80% coverage
+- ✅ Custom exception hierarchy
+- ✅ Google-style docstrings everywhere
+
+---
+
+## 🚀 Quick Setup for New Project
+
+```bash
+# 1. Initialize project
+uv init
+uv add fastapi uvicorn pydantic pydantic-settings
+
+# 2. Add ML dependencies
+uv add langchain langchain-openai qdrant-client tiktoken openai
+
+# 3. Add development tools
+uv add --dev pytest pytest-asyncio pytest-cov mypy ruff pre-commit
+
+# 4. Setup pre-commit
+uv run pre-commit install
+
+# 5. Create .env.example
+cat > .env.example << EOF
+OPENAI_API_KEY=your-key-here
+QDRANT_URL=http://localhost:6333
+DEBUG=false
+EOF
+
+# 6. Run tests
+uv run pytest --cov=app
+
+# 7. Format code
+uv run ruff format .
+
+# 8. Type check
+uv run mypy app/
+```
+
+---
+
+## 📖 Resources
+
+- [Pydantic Documentation](https://docs.pydantic.dev/)
+- [FastAPI Best Practices](https://github.com/zhanymkanov/fastapi-best-practices)
+- [LangChain Documentation](https://python.langchain.com/)
+- [Python Type Hints Cheat Sheet](https://mypy.readthedocs.io/en/stable/cheat_sheet_py3.html)
+- [Real Python](https://realpython.com/) - High-quality tutorials

@@ -1,0 +1,131 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "insurancelens-backend"
+version = "0.1.0"
+description = "AI assistant for German health insurance policy understanding"
+authors = [{ name = "AI Makerspace", email = "contact@aimakerspace.io" }]
+requires-python = ">=3.11"
+dependencies = [
+  # Web Framework
+  "fastapi>=0.115.0",
+  "uvicorn[standard]>=0.32.0",
+  # AI/ML Core
+  "openai>=1.52.0",
+  "langchain>=0.3.0",
+  "langchain-openai>=0.2.0",
+  "langchain-community>=0.3.0",
+  "langgraph>=0.2.30",
+  "langsmith>=0.1.134",
+  "ragas>=0.3.7",
+  "pillow>=10.0.0",             # Required by RAGAS for image handling
+  "rapidfuzz>=3.0.0",           # Required by RAGAS for string distance calculations
+  # Vector Database & Embeddings
+  "qdrant-client>=1.12.0",
+  "tiktoken>=0.8.0",
+  # PDF Processing
+  "pypdf>=5.0.0",
+  "pymupdf>=1.24.0",
+  # Web Search
+  "tavily-python>=0.5.0",
+  # Utilities
+  "python-multipart>=0.0.12",
+  "python-dotenv>=1.0.1",
+  "pydantic>=2.9.0",
+  "httpx>=0.27.2",
+  "tenacity>=9.0.0",
+  # Development
+  "pytest>=8.3.0",
+  "pytest-asyncio>=0.24.0",
+  "black>=24.10.0",
+  "isort>=5.13.0",
+  "mypy>=1.11.0",
+  "pydantic-settings>=2.11.0",
+  "ipykernel>=7.0.0",          # For Jupyter notebook integration
+  "matplotlib>=3.10.7",
+  "rank-bm25>=0.2.2",
+  "cohere>=5.12.0,<5.13.0",    # Cohere SDK (compatible with langchain-cohere 0.4.4)
+  "langchain-cohere==0.4.4",   # For Cohere Rerank
+]
+
+[project.optional-dependencies]
+dev = ["pytest-cov>=5.0.0", "pre-commit>=4.0.0"]
+
+[tool.black]
+line-length = 88
+target-version = ['py311']
+
+[tool.isort]
+profile = "black"
+
+[tool.hatch.build.targets.wheel]
+packages = ["app"]
+
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false       # Start lenient, gradually tighten
+disallow_incomplete_defs = false
+check_untyped_defs = true
+disallow_untyped_decorators = false
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_no_return = true
+warn_unreachable = true
+strict_equality = true
+show_error_codes = true
+show_column_numbers = true
+
+# Pydantic plugin for better model validation
+plugins = ["pydantic.mypy"]
+
+# Ignore missing imports for third-party libraries without stubs
+[[tool.mypy.overrides]]
+module = ["tiktoken.*", "pymupdf.*", "tavily.*", "qdrant_client.*"]
+ignore_missing_imports = true
+
+[tool.pydantic-mypy]
+init_forbid_extra = true
+init_typed = true
+warn_required_dynamic_aliases = true
+
+# Ruff configuration (linting and formatting)
+[tool.ruff]
+line-length = 88
+target-version = "py311"
+
+[tool.ruff.lint]
+select = [
+  "E",  # pycodestyle errors
+  "W",  # pycodestyle warnings
+  "F",  # pyflakes
+  "I",  # isort
+  "B",  # flake8-bugbear
+  "C4", # flake8-comprehensions
+  "UP", # pyupgrade
+]
+ignore = [
+  "E501", # line too long (handled by formatter)
+  "B008", # do not perform function calls in argument defaults
+]
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401"] # Allow unused imports in __init__.py
+
+# Pytest configuration
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-v --tb=short"
+
+# Bandit (security) configuration
+[tool.bandit]
+exclude_dirs = ["tests", "dev_scripts"]
+skips = ["B101"]                        # Skip assert warnings in tests

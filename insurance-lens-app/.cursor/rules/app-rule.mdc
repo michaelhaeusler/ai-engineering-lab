@@ -1,0 +1,89 @@
+---
+description: This rule is specific for this app
+globs:
+alwaysApply: true
+---
+
+-Project type: 3-day AI engineering MVP (for course / portfolio)
+Goal: Build a defensible, small but complete agentic RAG app that shows private-document understanding, reasoning, and tool use.
+
+⸻
+
+🎯 Core Idea
+
+InsuranceLens is an AI assistant that helps users understand their German health-insurance policies.
+
+User workflow:
+	1.	Upload a selectable German PDF policy.
+	2.	The system creates a clause index.
+	3.	It highlights 3–5 clauses that differ from typical norms (waiting periods, exclusions, deductibles, etc.).
+	4.	Users can ask:
+	•	Policy-specific questions → answered from their own document (RAG + citations).
+	•	General insurance questions → answered via web search (Tavily).
+	5.	Policy is stored privately per user.
+
+⸻
+
+🧠 Technical Focus
+	•	RAG for clause retrieval and explanation.
+	•	Agentic reasoning for:
+	•	Routing between policy Q&A and general web search.
+	•	Deciding which tool to call (policy retriever vs. Tavily).
+	•	Interpreting and comparing clauses to reference norms.
+	•	LangGraph for orchestration.
+	•	tiktoken + Qdrant for chunking and storage.
+
+⸻
+
+📚 “Norms” Seed Corpus (v1)
+
+A small curated file: norms_health_de_v1.json (~30–40 snippets).
+Each entry: {id, title, text, source, url, category}
+
+Three source levels:
+	1.	Statutory: §§192–208 of the Versicherungsvertragsgesetz (VVG) — official law.
+	2.	Model conditions: GDV Musterbedingungen MB/KK 2009 — industry templates.
+	3.	Consumer norms: Short guidance snippets from Verbraucherzentrale, BaFin, Finanztest.
+
+Categories: waiting_period, exclusion, deductible, cancellation, coverage_scope, territorial, claim_process, pre_existing.
+
+⸻
+
+🧩 MVP Scope (3 days)
+
+Day 1 – Ingestion & RAG Skeleton
+	•	Convert sample policy → text → semantic chunks (300–600 tokens).
+	•	Embed both policy and norms in Qdrant.
+	•	Verify retrieval.
+
+Day 2 – Agent Logic
+	•	Router → classify questions.
+	•	Policy Q&A → retrieve, compress, cite.
+	•	General Info → Tavily search + summarize.
+	•	Highlight generator → compare policy clauses vs norms; mark 3–5 clauses.
+
+Day 3 – Frontend (Nuxt 3)
+	•	Tabs: Übersicht, Highlights, Fragen.
+	•	Übersicht: basic policy info.
+	•	Highlights: clause + reason (“Warum markiert?”).
+	•	Fragen: chat box with answers (citations or web links).
+
+⸻
+
+💬 Positioning
+	•	Why not ChatGPT?
+	•	Works on private policy text.
+	•	Produces clause-level citations and norm comparisons.
+	•	Provides transparent reasoning and sources.
+	•	Restricted to the insurance domain.
+
+⸻
+
+✅ Deliverables
+	•	Working demo (one policy type, German only).
+	•	Seed norms corpus.
+	•	RAG + agent routing + web search.
+	•	Frontend with highlights and explainable answers.
+	•	Short demo script for presentation.
+
+⸻

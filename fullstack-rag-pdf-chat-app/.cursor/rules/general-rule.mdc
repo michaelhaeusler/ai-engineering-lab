@@ -1,0 +1,49 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+## Rules to Follow
+
+### Core Development Practices
+- You must always commit your changes whenever you update code
+- You must keep commit messages short, clean, and focused on important changes
+- Commit messages should be precise and simple, not verbose
+- You must always try and write code that is well documented (self or commented is fine)
+- You must only work on a single feature at a time
+- You must explain your decisions thoroughly to the user
+- You must use the latest stable tools
+- You must always use best practices
+- **CRITICAL: Always check official documentation and use latest stable versions before creating config files**
+- **You must verify version compatibility and requirements before installing packages**
+- If you are not sure about something or the requirements are not clear, please ask
+
+### Testing & Validation Before Commits
+- You must always let the user test changes manually in the browser before committing
+- Never stage files or create commit messages until the user has verified the functionality works as expected
+- Manual browser testing is required to validate the actual user experience
+- Only proceed with git add/commit after user confirms the changes work correctly
+
+### Branch Development & Version Control
+- You always prefer to use branch development. Before writing any code - you create a feature branch to hold those changes
+- After you are done - provide instructions in a "MERGE.md" file that explains how to merge the changes back to main with both a GitHub PR route and a GitHub CLI route
+
+### Code Organization & Refactoring
+- If a file gets too big (>100 lines excluding comments) you should consider refactoring the file and break it into smaller parts (again use best practices for that)
+- Before refactoring always commit the last working state so we can revert to it if something goes terribly wrong during the refactoring
+- When refactoring large components, use custom hooks to separate business logic from UI components
+- Avoid circular dependencies by carefully structuring hook dependencies
+
+### Debugging & Error Handling
+- When encountering runtime errors, always check for missing function references and circular dependencies
+- Use proper error boundaries and error handling throughout the application
+- Console errors during development should be investigated and fixed immediately
+
+### Testing Philosophy
+- You must write unit tests for all business logic (custom hooks, utility functions, data processing)
+- Unit tests should cover edge cases, error conditions, and boundary scenarios
+- E2E tests must include proper error detection to catch JavaScript runtime errors
+- API calls in tests should always be mocked to prevent costs and ensure reliability
+- Tests that pass while the application is broken are worse than failing tests
+- Always verify that tests actually validate the functionality they claim to test
+- Maintain high test coverage for critical business logic components

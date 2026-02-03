@@ -1,0 +1,40 @@
+# Environment and secrets
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+*.egg-info/
+.eggs/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Node / frontend
+node_modules/
+.next/
+out/
+
+# LangGraph / local state
+.langgraph_api/
+
+# Caches (embedding, LLM, etc.)
+cache/
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
+
+# App-specific (adjust if you want to track some of these)
+uploads/
+backend/data/uploads/
+backend/data/qdrant/

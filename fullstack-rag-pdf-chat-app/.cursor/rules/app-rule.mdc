@@ -1,0 +1,10 @@
+---
+description: This rule is specific for this app
+globs:
+alwaysApply: true
+---
+
+- This is a Hybrid "Normal chat / RAG chat app"
+- It should look very clean and modernn
+- It should look like an app Apple would do and Jony Ive would be proud of
+- A very good UX / UI is very important

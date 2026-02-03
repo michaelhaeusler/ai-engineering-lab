@@ -1,0 +1,89 @@
+{
+  "timestamp": "2025-10-19T14:36:31.311667",
+  "summary": {
+    "total": 13,
+    "passed": 10,
+    "failed": 3,
+    "success_rate": "76.9%"
+  },
+  "results": [
+    {
+      "test": "Health Check",
+      "status": "\u2705 PASS",
+      "details": "Status: healthy, Service: InsuranceLens API",
+      "timestamp": "2025-10-19T14:36:03.336102"
+    },
+    {
+      "test": "Upload Policy - Success",
+      "status": "\u2705 PASS",
+      "details": "Policy ID: 6581f126-7dfa-4927-a041-b70c5c9116e5, Chunks: 35",
+      "timestamp": "2025-10-19T14:36:13.447124"
+    },
+    {
+      "test": "Upload Policy - Invalid File",
+      "status": "\u2705 PASS",
+      "details": "Correctly rejected with status 400",
+      "timestamp": "2025-10-19T14:36:15.258666"
+    },
+    {
+      "test": "Upload Policy - No File",
+      "status": "\u2705 PASS",
+      "details": "Correctly rejected with status 422",
+      "timestamp": "2025-10-19T14:36:15.278900"
+    },
+    {
+      "test": "Ask Question - Success",
+      "status": "\u2705 PASS",
+      "details": "Answer length: 1315 chars, Citations: 5, Confidence: 0.52",
+      "timestamp": "2025-10-19T14:36:21.878622"
+    },
+    {
+      "test": "Ask Question - Invalid Policy",
+      "status": "\u2705 PASS",
+      "details": "Correctly rejected with status 404",
+      "timestamp": "2025-10-19T14:36:23.197210"
+    },
+    {
+      "test": "Ask Question - Empty Question",
+      "status": "\u274c FAIL",
+      "error": "Expected validation error, got 404",
+      "timestamp": "2025-10-19T14:36:23.503819"
+    },
+    {
+      "test": "Ask Question - Long Question",
+      "status": "\u2705 PASS",
+      "details": "Handled long question successfully (status 200)",
+      "timestamp": "2025-10-19T14:36:29.599135"
+    },
+    {
+      "test": "Ask Question - English Query",
+      "status": "\u274c FAIL",
+      "error": "Expected 200, got 404",
+      "timestamp": "2025-10-19T14:36:31.188124"
+    },
+    {
+      "test": "List Policies",
+      "status": "\u2705 PASS",
+      "details": "Found 0 policies",
+      "timestamp": "2025-10-19T14:36:31.211489"
+    },
+    {
+      "test": "Get Policy Overview",
+      "status": "\u274c FAIL",
+      "error": "Expected 200, got 404",
+      "timestamp": "2025-10-19T14:36:31.242840"
+    },
+    {
+      "test": "Delete Policy",
+      "status": "\u2705 PASS",
+      "details": "Successfully deleted policy 6581f126-7dfa-4927-a041-b70c5c9116e5",
+      "timestamp": "2025-10-19T14:36:31.287165"
+    },
+    {
+      "test": "Delete Policy - Non-existent",
+      "status": "\u2705 PASS",
+      "details": "Correctly rejected with status 404",
+      "timestamp": "2025-10-19T14:36:31.311117"
+    }
+  ]
+}

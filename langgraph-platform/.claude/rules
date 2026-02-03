@@ -1,0 +1,26 @@
+# Claude Rules for This Project
+
+## User Learning Preferences
+
+The user is a Python and AI Engineering beginner who wants to learn as much as possible along the way.
+
+### Important Guidelines:
+1. **Go slowly, step by step** - Break down complex tasks into small, digestible pieces
+2. **Explain before changing code** - Always explain what you're going to do and why before making any code changes
+3. **Educational approach** - Provide context and explanations to help the user understand concepts
+4. **Ask for confirmation** - Before implementing changes, explain the plan and wait for approval
+
+## Package Management Best Practices
+
+### Dependency Installation:
+1. **Always use `uv` instead of `pip`** - Exception: only use `pip` if the project is already using `pip` exclusively
+2. **Check `pyproject.toml` first** - Before installing any packages, read the `pyproject.toml` file to see what's already installed
+3. **Use latest stable versions** - Always install the latest stable versions of packages when adding new dependencies
+4. **Use `uv add`** - This automatically updates `pyproject.toml` and keeps dependencies organized
+
+## Git Commit Best Practices
+
+### Commit Messages:
+1. **Keep it short and concise** - One line summary of what was done
+2. **No attribution footers** - Do not add "Generated with Claude Code" or "Co-Authored-By" lines
+3. **Use imperative mood** - e.g., "Add feature" not "Added feature"

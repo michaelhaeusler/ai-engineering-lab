@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:docs.guardrailsai.com)",
+      "WebFetch(domain:www.guardrailsai.com)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

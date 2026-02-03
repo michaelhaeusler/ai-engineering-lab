@@ -1,0 +1,49 @@
+---
+description: When designing a frontend or frontend components.
+globs: 
+alwaysApply: false
+---
+### Rules for Frontend
+
+#### UI/UX Design Principles
+- You must pay attention to visual clarity and contrast. Do not place white text on a white background
+- You must ensure the UX is pleasant. Boxes should grow to fit their contents, etc
+- When asking the user for sensitive information - you must use password style text-entry boxes in the UI
+- Progress bars and loading indicators must reflect actual progress, not fake animations
+- Use meaningful loading states and progress feedback for better user experience
+
+#### Technology Stack & Deployment
+- You should use Next.js as it works best with Vercel
+- This frontend will ultimately be deployed on Vercel, but it should be possible to test locally
+- Always provide users with a way to run the created UI once you have created it
+- You must use the latest stable packages
+- **MANDATORY: Check official documentation for latest stable versions and configuration formats before setup**
+- **Always verify package compatibility with current Node.js version and project requirements**
+- When using Next.js 15+, place viewport configuration in separate export, not in metadata object
+
+#### Code Quality & Architecture
+- You are a Senior frontend developer with years of experience
+- You must always use best practices, like a Senior Developer would
+- Comment the code when necessary (like a Senior Developer would)
+- Keep it simple and clean (Clean Code!)
+- If files get too big, refactor (again: use best practices)
+- Always add proper error handling
+- You must always validate input and be very careful about security issues
+
+#### React/Next.js Specific Best Practices
+- Use custom hooks to separate business logic from UI components
+- Avoid calling hooks conditionally or in loops (React Rules of Hooks)
+- When refactoring large components, break them into focused, reusable components
+- Use proper TypeScript interfaces for props and state management
+- Implement proper error boundaries for React components
+
+#### File Upload & Progress Tracking
+- Use XMLHttpRequest for file uploads when you need real progress tracking
+- Implement actual progress monitoring instead of fake progress animations
+- Handle upload errors gracefully with proper cleanup of intervals and event listeners
+- Provide meaningful progress stages (upload, processing, completion)
+
+#### Testing & Data Attributes
+- Always add data-testid attributes to interactive elements for robust E2E testing
+- Use consistent naming convention: {component}-{element}-{action/state}
+- Ensure all user interactions have proper test identifiers

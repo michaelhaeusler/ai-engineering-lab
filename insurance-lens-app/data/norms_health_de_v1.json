@@ -1,0 +1,127 @@
+{
+  "version": "1.0",
+  "description": "German health insurance norms and reference standards",
+  "last_updated": "2025-10-17",
+  "norms": [
+    {
+      "id": "vvg_192_waiting_period",
+      "title": "Allgemeine Wartezeit nach VVG §192",
+      "text": "Die allgemeine Wartezeit beträgt höchstens drei Monate nach Versicherungsbeginn. Für Psychotherapie und Zahnbehandlung können längere Wartezeiten bis zu acht Monaten vereinbart werden.",
+      "source": "Versicherungsvertragsgesetz (VVG) §192",
+      "url": "https://www.gesetze-im-internet.de/vvg_2008/__192.html",
+      "category": "waiting_period"
+    },
+    {
+      "id": "vvg_193_pre_existing",
+      "title": "Vorerkrankungen nach VVG §193",
+      "text": "Vorerkrankungen müssen bei Antragstellung vollständig und wahrheitsgemäß angegeben werden. Verschweigen kann zur Kündigung oder Leistungsverweigerung führen.",
+      "source": "Versicherungsvertragsgesetz (VVG) §193",
+      "url": "https://www.gesetze-im-internet.de/vvg_2008/__193.html",
+      "category": "pre_existing"
+    },
+    {
+      "id": "gdv_mb_deductible",
+      "title": "Selbstbeteiligung nach GDV Musterbedingungen",
+      "text": "Die Selbstbeteiligung beträgt üblicherweise zwischen 300€ und 2.500€ pro Jahr. Bei ambulanten Behandlungen oft 20% der Kosten, maximal jedoch die vereinbarte Jahres-Selbstbeteiligung.",
+      "source": "GDV Musterbedingungen MB/KK 2009",
+      "url": "https://www.gdv.de/musterbedingungen",
+      "category": "deductible"
+    },
+    {
+      "id": "gdv_dental_waiting",
+      "title": "Wartezeit Zahnbehandlung",
+      "text": "Für Zahnbehandlungen und Zahnersatz gelten üblicherweise 8 Monate Wartezeit. Prophylaxe und Zahnreinigung oft ohne Wartezeit oder nur 3 Monate.",
+      "source": "GDV Musterbedingungen MB/KK 2009",
+      "url": "https://www.gdv.de/musterbedingungen",
+      "category": "waiting_period"
+    },
+    {
+      "id": "psychotherapy_standard",
+      "title": "Psychotherapie Standardleistungen",
+      "text": "Psychotherapie wird nach GOP (Gebührenordnung für Psychotherapeuten) bis zum 3,5-fachen Satz erstattet. 50-80 Sitzungen pro Jahr sind üblich versichert.",
+      "source": "Verbraucherzentrale",
+      "url": "https://www.verbraucherzentrale.de/wissen/gesundheit-pflege/krankenversicherung",
+      "category": "coverage_scope"
+    },
+    {
+      "id": "alternative_medicine_limit",
+      "title": "Naturheilverfahren Begrenzung",
+      "text": "Heilpraktikerbehandlungen sind meist auf 500-1.500€ pro Jahr begrenzt. Nur anerkannte Verfahren werden erstattet.",
+      "source": "Verbraucherzentrale",
+      "url": "https://www.verbraucherzentrale.de/wissen/gesundheit-pflege/krankenversicherung",
+      "category": "coverage_scope"
+    },
+    {
+      "id": "hospital_standard",
+      "title": "Krankenhausbehandlung Standard",
+      "text": "Mehrbettzimmer und Behandlung durch Stationsarzt sind Standard. Chefarztbehandlung und Einzelzimmer nur bei entsprechendem Tarif.",
+      "source": "BaFin Verbraucherhinweise",
+      "url": "https://www.bafin.de/DE/Verbraucher/versicherungen",
+      "category": "coverage_scope"
+    },
+    {
+      "id": "cancellation_right_vvg",
+      "title": "Kündigungsrecht nach VVG",
+      "text": "Ordentliche Kündigung zum Ende des Versicherungsjahres mit 3 Monaten Frist. Bei Beitragserhöhung außerordentliches Kündigungsrecht binnen eines Monats.",
+      "source": "Versicherungsvertragsgesetz (VVG) §205",
+      "url": "https://www.gesetze-im-internet.de/vvg_2008/__205.html",
+      "category": "cancellation"
+    },
+    {
+      "id": "territorial_scope_eu",
+      "title": "EU-weiter Versicherungsschutz",
+      "text": "Notfallbehandlungen in der EU sind standardmäßig versichert. Weltweiter Schutz oft zeitlich begrenzt auf 6 Wochen pro Jahr.",
+      "source": "Finanztest",
+      "url": "https://www.test.de/krankenversicherung",
+      "category": "territorial"
+    },
+    {
+      "id": "claim_notification_period",
+      "title": "Schadensmeldung Fristen",
+      "text": "Behandlungsrechnungen müssen innerhalb von 12 Monaten nach Behandlung eingereicht werden. Bei verspäteter Meldung kann Erstattung gekürzt werden.",
+      "source": "GDV Musterbedingungen MB/KK 2009",
+      "url": "https://www.gdv.de/musterbedingungen",
+      "category": "claim_process"
+    },
+    {
+      "id": "maternity_coverage",
+      "title": "Mutterschaftsleistungen",
+      "text": "Schwangerschaft und Entbindung nach 8 Monaten Wartezeit versichert. Komplikationen während der Schwangerschaft ohne Wartezeit.",
+      "source": "Verbraucherzentrale",
+      "url": "https://www.verbraucherzentrale.de/wissen/gesundheit-pflege/krankenversicherung",
+      "category": "waiting_period"
+    },
+    {
+      "id": "prescription_drugs_standard",
+      "title": "Arzneimittel Erstattung",
+      "text": "Verschreibungspflichtige Medikamente werden nach AMG (Arzneimittelgesetz) erstattet. Selbstbeteiligung oft 10% des Preises, mindestens 5€, maximal 10€ pro Medikament.",
+      "source": "BaFin Verbraucherhinweise",
+      "url": "https://www.bafin.de/DE/Verbraucher/versicherungen",
+      "category": "coverage_scope"
+    },
+    {
+      "id": "exclusion_cosmetic_surgery",
+      "title": "Ausschluss kosmetische Eingriffe",
+      "text": "Schönheitsoperationen und kosmetische Behandlungen sind standardmäßig ausgeschlossen, außer nach Unfällen oder bei medizinischer Notwendigkeit.",
+      "source": "GDV Musterbedingungen MB/KK 2009",
+      "url": "https://www.gdv.de/musterbedingungen",
+      "category": "exclusion"
+    },
+    {
+      "id": "glasses_hearing_aids_limit",
+      "title": "Sehhilfen und Hörhilfen Begrenzung",
+      "text": "Brillen und Kontaktlinsen meist nur alle 2 Jahre und bis 150-300€. Hörgeräte alle 6 Jahre bis zu bestimmten Höchstbeträgen.",
+      "source": "Finanztest",
+      "url": "https://www.test.de/krankenversicherung",
+      "category": "coverage_scope"
+    },
+    {
+      "id": "prevention_coverage_standard",
+      "title": "Vorsorgeuntersuchungen Standard",
+      "text": "Gesetzliche Vorsorgeuntersuchungen (Krebs-Früherkennung, Check-up) werden vollständig erstattet. Zusätzliche Vorsorge oft begrenzt auf 150-500€ pro Jahr.",
+      "source": "Verbraucherzentrale",
+      "url": "https://www.verbraucherzentrale.de/wissen/gesundheit-pflege/krankenversicherung",
+      "category": "coverage_scope"
+    }
+  ]
+}

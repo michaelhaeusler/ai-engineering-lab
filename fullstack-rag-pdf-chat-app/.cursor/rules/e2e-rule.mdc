@@ -1,0 +1,38 @@
+---
+description: When creating e2e tests
+alwaysApply: false
+---
+### Rules for e2e test
+
+#### Core Requirements
+- You must make sure that all e2e test run
+- You must write e2e like an experienced Senior Frontend developer would
+- You must use best practices
+- You must stop and only fix that one file when an error occurs before moving on
+- You must create a new e2e test when a new feature was added or when a feature was changed
+
+#### Element Selection & Browser Compatibility
+- You must use data attributes (example: 'data-testid'='file-upload-button') to get elements 
+- You must use type() instead of fill() to prevent issues with webkit
+- Use getByTestId() for robust element selection
+
+#### API Mocking (Critical!)
+- You must always mock API calls (especially if they cost money like calls to OpenAI)
+- Use page.route() to intercept and mock all external API calls
+- Never let tests make real API calls to external services
+
+#### Error Detection (Essential!)
+- You must set up error detection to catch JavaScript runtime errors and console errors
+- You must use setupErrorDetection() helper in beforeEach to fail tests on JavaScript errors
+- Import: `import { setupErrorDetection, setupApiKey } from './helpers/error-detection'`
+- Usage in beforeEach:
+  ```
+  setupErrorDetection(page, {
+    failOnConsoleError: true,
+    failOnPageError: true,
+    ignoreNetworkErrors: true
+  });
+  ```
+- You must create specific tests for error-prone functionality (like file uploads)
+- You must test that features work without causing JavaScript runtime errors
+- Tests should fail immediately on any unhandled JavaScript errors

@@ -1,0 +1,239 @@
+{
+  "version": "1.0",
+  "description": "German health insurance norms and reference standards",
+  "last_updated": "2025-10-17",
+  "norms": [
+    {
+      "id": "vvg_192_1_medically_necessary",
+      "title": "Vertragstypische Leistungen – medizinisch notwendige Behandlung",
+      "text": "In der Krankheitskostenversicherung erstattet der Versicherer Aufwendungen für medizinisch notwendige Heilbehandlung im vereinbarten Umfang.",
+      "source": "Gesetze im Internet – VVG §192",
+      "url": "https://www.gesetze-im-internet.de/vvg_2008/__192.html",
+      "category": "coverage_scope"
+    },
+    {
+      "id": "vvg_193_obligation",
+      "title": "Versicherungspflicht / versicherte Person",
+      "text": "Das Gesetz regelt, wer versichert sein muss und welche Mindestanforderungen für die Absicherung gelten.",
+      "source": "Gesetze im Internet – VVG §193",
+      "url": "https://www.gesetze-im-internet.de/vvg_2008/__193.html",
+      "category": "general_obligation"
+    },
+    {
+      "id": "vvg_197_waiting_limits",
+      "title": "Wartezeiten – gesetzliche Obergrenzen",
+      "text": "Allgemeine Wartezeit max. 3 Monate; besondere Wartezeiten (z. B. Entbindung, Psychotherapie, Zahnleistungen) max. 8 Monate; bei Pflegekrankenversicherung bis zu 3 Jahre.",
+      "source": "Gesetze im Internet – VVG §197",
+      "url": "https://www.gesetze-im-internet.de/vvg_2008/__197.html",
+      "category": "waiting_period"
+    },
+    {
+      "id": "vvg_200_no_overcompensation",
+      "title": "Bereicherungsverbot",
+      "text": "Leistungen dürfen insgesamt nicht zu einer Überkompensation führen, wenn mehrere Erstattungsansprüche bestehen.",
+      "source": "Gesetze im Internet – VVG §200",
+      "url": "https://www.gesetze-im-internet.de/vvg_2008/__200.html",
+      "category": "claim_process"
+    },
+    {
+      "id": "vvg_205_cancellation_policyholder",
+      "title": "Kündigung durch Versicherungsnehmer – Bedingungen",
+      "text": "Bei bestimmten Konstellationen (z. B. Versicherungspflicht in der GKV) kann der Versicherungsnehmer kündigen; Fristen und Nachweispflichten sind geregelt.",
+      "source": "Gesetze im Internet – VVG §205",
+      "url": "https://www.gesetze-im-internet.de/vvg_2008/__205.html",
+      "category": "cancellation"
+    },
+    {
+      "id": "vvg_206_no_insurer_termination",
+      "title": "Kündigung durch den Versicherer – Ausschluss",
+      "text": "Bei Krankheitskostenversicherung, die der Pflicht nach §193 genügt, ist eine Kündigung durch den Versicherer grundsätzlich ausgeschlossen.",
+      "source": "Gesetze im Internet – VVG §206",
+      "url": "https://www.gesetze-im-internet.de/vvg_2008/__206.html",
+      "category": "termination"
+    },
+    {
+      "id": "mbkk_1_scope",
+      "title": "MB/KK §1 – Gegenstand, Umfang, Geltungsbereich",
+      "text": "Die Musterbedingungen definieren, wofür Versicherungsschutz besteht (Krankheiten/Unfälle) und begrenzen den Geltungsbereich gemäß Vertrag.",
+      "source": "PKV.de – MB/KK 2009 (PDF)",
+      "url": "https://www.pkv.de/fileadmin/user_upload/PKV/3_PDFs/ABV_und_MB/MB-KK.pdf",
+      "category": "coverage_scope"
+    },
+    {
+      "id": "mbkk_2_start_of_coverage",
+      "title": "MB/KK §2 – Beginn des Versicherungsschutzes",
+      "text": "Versicherungsschutz beginnt gemäß Vertragsbedingungen, häufig nach Annahme und fristgerechter Zahlung sowie unter Beachtung von Wartezeiten.",
+      "source": "PKV.de – MB/KK 2009 (PDF)",
+      "url": "https://www.pkv.de/fileadmin/user_upload/PKV/3_PDFs/ABV_und_MB/MB-KK.pdf",
+      "category": "start_of_coverage"
+    },
+    {
+      "id": "mbkk_3_scope_benefits",
+      "title": "MB/KK §3 – Leistungsumfang",
+      "text": "Der Leistungsumfang umfasst die im Tarif vereinbarten erstattungsfähigen Kosten; Details regeln die Tarifbedingungen.",
+      "source": "PKV.de – MB/KK 2009 (PDF)",
+      "url": "https://www.pkv.de/fileadmin/user_upload/PKV/3_PDFs/ABV_und_MB/MB-KK.pdf",
+      "category": "coverage_scope"
+    },
+    {
+      "id": "mbkk_4_exclusions",
+      "title": "MB/KK §4 – Ausschlüsse",
+      "text": "Bestimmte Leistungen sind typischerweise ausgeschlossen; genaue Ausschlüsse ergeben sich aus den Bedingungen.",
+      "source": "PKV.de – MB/KK 2009 (PDF)",
+      "url": "https://www.pkv.de/fileadmin/user_upload/PKV/3_PDFs/ABV_und_MB/MB-KK.pdf",
+      "category": "exclusion"
+    },
+    {
+      "id": "mbkk_5_waiting_times",
+      "title": "MB/KK §5 – Wartezeiten (Richtwerte)",
+      "text": "Musterbedingungen nennen eine allgemeine Wartezeit von 3 Monaten und besondere Wartezeiten von 8 Monaten (z. B. Entbindung, Psychotherapie, Zahnleistungen).",
+      "source": "PKV.de – MB/KK 2009 (PDF)",
+      "url": "https://www.pkv.de/fileadmin/user_upload/PKV/3_PDFs/ABV_und_MB/MB-KK.pdf",
+      "category": "waiting_period"
+    },
+    {
+      "id": "mbkt_1_income_loss",
+      "title": "MB/KT §1 – Krankentagegeld (Verdienstausfall)",
+      "text": "Beim Krankentagegeld ist der Versicherungszweck die Absicherung des Verdienstausfalls infolge Arbeitsunfähigkeit.",
+      "source": "PKV.de – MB/KT 2009 (PDF)",
+      "url": "https://www.pkv.de/fileadmin/user_upload/PKV/3_PDFs/ABV_und_MB/MB-KT.pdf",
+      "category": "coverage_scope"
+    },
+    {
+      "id": "mbkk_termination",
+      "title": "MB/KK §13 – Kündigung",
+      "text": "Die Musterbedingungen regeln ordentliche und besondere Kündigungsrechte und die entsprechenden Fristen.",
+      "source": "PKV.de – MB/KK 2009 (PDF)",
+      "url": "https://www.pkv.de/fileadmin/user_upload/PKV/3_PDFs/ABV_und_MB/MB-KK.pdf",
+      "category": "cancellation"
+    },
+    {
+      "id": "pkv_de_self_deductible_limit",
+      "title": "Selbstbehalt – übliche Obergrenze",
+      "text": "Der jährliche Selbstbehalt kann variieren; für ambulante und stationäre Leistungen zusammen gilt häufig eine Obergrenze von 5.000 €.",
+      "source": "PKV.de – Der Selbstbehalt in der PKV",
+      "url": "https://www.pkv.de/wissen/beitraege/beitragskalkulation/der-selbstbehalt-in-der-pkv/",
+      "category": "deductible"
+    },
+    {
+      "id": "bafin_consumer_waiting_surcharges",
+      "title": "BaFin – Gesundheitsprüfung, Wartezeit, Risikozuschlag",
+      "text": "In der PKV sind Gesundheitsprüfung, Risikozuschläge sowie Vereinbarungen zu Wartezeiten zulässig und sollten vor Abschluss beachtet werden.",
+      "source": "BaFin – Private Kranken- und Pflegepflichtversicherung",
+      "url": "https://www.bafin.de/DE/Verbraucher/Versicherung/Produkte/Kranken/krankenversicherung_node.html",
+      "category": "pre_existing"
+    },
+    {
+      "id": "vz_tarifwechsel",
+      "title": "Verbraucherzentrale – Tarifwechsel in der PKV",
+      "text": "Beim internen Tarifwechsel lassen sich Leistungen und Beiträge anpassen; Konditionen, Fristen und Konsequenzen sind zu prüfen.",
+      "source": "Verbraucherzentrale – PKV: Tarifwechsel",
+      "url": "https://www.verbraucherzentrale.de/wissen/gesundheit-pflege/krankenversicherung/private-krankenversicherung-so-wechseln-sie-in-einen-guenstigeren-tarif-12352",
+      "category": "policy_switch"
+    },
+    {
+      "id": "vvg_19_duty_to_disclose",
+      "title": "Vorvertragliche Anzeigepflicht",
+      "text": "Gefahrumstände, nach denen der Versicherer fragt (z. B. Gesundheitsangaben), sind vollständig und wahrheitsgemäß anzugeben.",
+      "source": "Gesetze im Internet – VVG §19",
+      "url": "https://www.gesetze-im-internet.de/vvg_2008/__19.html",
+      "category": "pre_existing"
+    },
+    {
+      "id": "mbkk_territorial",
+      "title": "MB/KK – Territorialer Geltungsbereich",
+      "text": "Der Versicherungsschutz gilt innerhalb des vertraglich vereinbarten Geltungsbereichs; Details ergeben sich aus Tarif/AVB.",
+      "source": "PKV.de – MB/KK 2009 (PDF)",
+      "url": "https://www.pkv.de/fileadmin/user_upload/PKV/3_PDFs/ABV_und_MB/MB-KK.pdf",
+      "category": "territorial"
+    },
+    {
+      "id": "mbkk_claims_process",
+      "title": "MB/KK – Einreichung/Erstattung",
+      "text": "Die Bedingungen regeln, wie Rechnungen/Belege einzureichen sind und in welchem Umfang erstattet wird.",
+      "source": "PKV.de – MB/KK 2009 (PDF)",
+      "url": "https://www.pkv.de/fileadmin/user_upload/PKV/3_PDFs/ABV_und_MB/MB-KK.pdf",
+      "category": "claim_process"
+    },
+    {
+      "id": "mbkk_premium_payment",
+      "title": "MB/KK – Beitragszahlung und Fälligkeit",
+      "text": "Die AVB/Tarifbedingungen regeln Fälligkeit und Folgen bei Zahlungsverzug; Versicherungsschutz hängt regelmäßig von fristgerechter Zahlung ab.",
+      "source": "PKV.de – MB/KK 2009 (PDF)",
+      "url": "https://www.pkv.de/fileadmin/user_upload/PKV/3_PDFs/ABV_und_MB/MB-KK.pdf",
+      "category": "premium_payment"
+    },
+    {
+      "id": "mbkt_waiting",
+      "title": "MB/KT – Wartezeiten (Tagegeld)",
+      "text": "Für Krankentagegeld gelten eigenständige Regelungen; Wartezeiten und Beginn der Leistung richten sich nach MB/KT und Tarif.",
+      "source": "PKV.de – MB/KT 2009 (PDF)",
+      "url": "https://www.pkv.de/fileadmin/user_upload/PKV/3_PDFs/ABV_und_MB/MB-KT.pdf",
+      "category": "waiting_period"
+    },
+    {
+      "id": "vvg_205_two_month_proof",
+      "title": "Kündigungsnachweis – Frist",
+      "text": "Bei Kündigung wegen Versicherungspflicht muss der Eintritt der Pflicht innerhalb einer gesetzlich geregelten Frist nachgewiesen werden.",
+      "source": "Dejure – VVG §205",
+      "url": "https://dejure.org/gesetze/VVG/205.html",
+      "category": "cancellation"
+    },
+    {
+      "id": "vvg_206_insurer_no_cancel_obligation",
+      "title": "Kein Kündigungsrecht des Versicherers bei Pflichtversicherung",
+      "text": "Ein Versicherer kann eine Pflicht-Krankheitskostenversicherung nicht ordentlich kündigen.",
+      "source": "Dejure – VVG §206",
+      "url": "https://dejure.org/gesetze/VVG/206.html",
+      "category": "termination"
+    },
+    {
+      "id": "pkv_consumer_risks",
+      "title": "Verbraucherzentrale – Risiken: Zuschläge/Ausschlüsse",
+      "text": "Vorerkrankungen oder Alter können zu Risikozuschlägen, Leistungsausschlüssen oder höheren Beiträgen führen.",
+      "source": "Verbraucherzentrale – Private Krankenversicherung",
+      "url": "https://www.verbraucherzentrale.de/wissen/gesundheit-pflege/krankenversicherung/private-krankenversicherung-nicht-fuer-jeden-sinnvoll-13884",
+      "category": "pre_existing"
+    },
+    {
+      "id": "vvg_38_payment_delay",
+      "title": "§38 VVG – Folgen des Zahlungsverzugs",
+      "text": "Bleibt der Versicherungsnehmer mit der Beitragszahlung im Verzug, kann der Versicherer nach Mahnung den Vertrag kündigen oder den Versicherungsschutz aussetzen.",
+      "source": "Gesetze im Internet – VVG §38",
+      "url": "https://www.gesetze-im-internet.de/vvg_2008/__38.html",
+      "category": "premium_payment"
+    },
+    {
+      "id": "vvg_40_reinstatement",
+      "title": "§40 VVG – Nachzahlung und Wiederaufleben des Versicherungsschutzes",
+      "text": "Zahlt der Versicherungsnehmer die rückständigen Beiträge innerhalb eines Monats nach Kündigung, lebt der Vertrag zu den ursprünglichen Bedingungen wieder auf.",
+      "source": "Gesetze im Internet – VVG §40",
+      "url": "https://www.gesetze-im-internet.de/vvg_2008/__40.html",
+      "category": "premium_payment"
+    },
+    {
+      "id": "gdv_mbkk_cancellation_notice",
+      "title": "MB/KK – Kündigungsfristen",
+      "text": "Die ordentliche Kündigung ist zum Ende eines Versicherungsjahres mit einer Frist von drei Monaten möglich, sofern nichts anderes vereinbart wurde.",
+      "source": "PKV.de – MB/KK 2009 (PDF)",
+      "url": "https://www.pkv.de/fileadmin/user_upload/PKV/3_PDFs/ABV_und_MB/MB-KK.pdf",
+      "category": "cancellation"
+    },
+    {
+      "id": "basistarif_comparability",
+      "title": "Basistarif – Vergleichbarkeit mit gesetzlicher Krankenversicherung",
+      "text": "Der Basistarif der privaten Krankenversicherung muss in Art, Umfang und Höhe mit den Leistungen der gesetzlichen Krankenversicherung vergleichbar sein.",
+      "source": "BaFin – Basistarif in der PKV",
+      "url": "https://www.bafin.de/DE/Verbraucher/Versicherung/Produkte/Kranken/basistarif_node.html",
+      "category": "coverage_scope"
+    },
+    {
+      "id": "vz_right_of_withdrawal",
+      "title": "Verbraucherzentrale – Widerrufsrecht",
+      "text": "Verbraucher können Versicherungsverträge innerhalb von 14 Tagen nach Erhalt der Unterlagen ohne Angabe von Gründen widerrufen; Fristbeginn und Form sind in den AVB geregelt.",
+      "source": "Verbraucherzentrale – Widerrufsrecht bei Versicherungen",
+      "url": "https://www.verbraucherzentrale.de/wissen/geld-versicherungen/versicherungsvertrag-widerrufen-11320",
+      "category": "contract_rights"
+    }
+  ]
+}

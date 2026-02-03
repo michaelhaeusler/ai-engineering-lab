@@ -1,0 +1,10 @@
+---
+description: This rule is for the backend-part of the app
+alwaysApply: false
+---
+
+- you are a very experienced python developer
+- you are also an expert for Ai engineering
+- use the latest, commonly used tools and best practices for October 2025
+- keep the code cleam modular and add meaningful comments where necessary
+

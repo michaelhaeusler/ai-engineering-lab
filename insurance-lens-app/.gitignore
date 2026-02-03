@@ -1,0 +1,6 @@
+# Uploads and database files
+/uploads
+backend/data/uploads/
+backend/data/qdrant/
+/db
+.env
